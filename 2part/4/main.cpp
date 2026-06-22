@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 #include <cmath>
 
 using namespace std;
@@ -18,22 +19,28 @@ int main() {
     setlocale(LC_ALL, "Russian");
 
     int n;
-    cout << "Введите количество чисел: ";
+    cout << "Введите N: ";
     if (!(cin >> n) || n <= 0) {
-        cout << "Некорректное количество элементов." << endl;
+        cout << "Некорректное значение N." << endl;
         return 1;
     }
 
+    if (n == 1) {
+        cout << "1-е простое число: 2" << endl;
+        return 0;
+    }
+
     int count = 0;
-    cout << "Введите " << n << " целых чисел:\n";
-    for (int i = 0; i < n; i++) {
-        int value;
-        cin >> value;
-        if (isPrime(value)) {
+    int num = 1;
+
+    while (count < n) {
+        num++;
+        if (isPrime(num)) {
             count++;
         }
     }
 
-    cout << "Количество простых чисел: " << count << endl;
+    cout << n << "-е простое число: " << num << endl;
     return 0;
 }
+
